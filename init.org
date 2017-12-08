@@ -1,0 +1,21 @@
+#+TITLE: A Basic Literate Emacs configuration
+* Settings
+** Personal information
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Your Name"
+        user-mail-address "email@yourhost.com")
+#+END_SRC
+** Enable Package Support
+Enable package functionality, install popular package archives, and install use-package to configure packages.
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+  (setq package-archives
+        '(("gnu" . "https://elpa.gnu.org/packages/")
+          ("melpa" . "https://melpa.org/packages/")))
+  (setq load-prefer-newer t)
+  (package-initialize)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package)
+#+END_SRC
